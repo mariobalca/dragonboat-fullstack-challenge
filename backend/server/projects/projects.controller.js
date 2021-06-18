@@ -1,15 +1,26 @@
 import ProjectsService from "./projects.service";
 
 export default class {
+  constructor() {
+    this.service = new ProjectsService();
+  }
   getOne = (id) => {
-    const service = new ProjectsService();
-
-    return service.getOne(id);
+    return this.service.getOne(id);
   };
 
   get = () => {
-    const service = new ProjectsService();
+    return this.service.getAll();
+  };
 
-    return service.getAll();
+  create = (attrs) => {
+    return this.service.create(attrs);
+  };
+
+  update = (id, attrs) => {
+    return this.service.update(id, attrs);
+  };
+
+  delete = (id) => {
+    return this.service.delete(id);
   };
 }
