@@ -38,23 +38,32 @@ export default class {
   static findOne = _findOne;
 
   static create = (attrs = {}) => {
-    const project = attrs
-    data.push(attrs);
+    const id = data[data.length - 1].id + 1;
+    console.log('gerei',id);
+    console.log('data.length - 1', data.length - 1)
+    console.log('data', data)
+    const project = {id, ...attrs};
+    data.push(project);
 
-    return project
+    return project;
   }
 
   static update = (conditions = {}, attrs = {}) => {
     const project = _findOne(conditions);
-    
+
     return Object.assign(project, attrs);
   }
 
   static delete = (conditions = {}) => {
     const project = _findOne(conditions);
-    const index = data.indexOf(project => project.id === conditions.id);
-
+    const index = data.findIndex((obj) =>
+        Object.entries(conditions).reduce((curr, [key, condition]) => {
+          if (!curr) return false;
+          return obj[key] === condition;
+        }, true)
+    );
     data.splice(index, 1);
+    console.log(data)
 
     return project;
   }

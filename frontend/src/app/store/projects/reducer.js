@@ -1,4 +1,4 @@
-import { FETCH_PROJECT, FETCH_PROJECTS } from "./types";
+import {CREATE_PROJECT, DELETE_PROJECT, FETCH_PROJECT, FETCH_PROJECTS, UPDATE_PROJECT} from "./types";
 
 const initialState = {
   byId: {},
@@ -27,6 +27,40 @@ const reducer = (state = initialState, action) => {
           [data.id]: data,
         },
       };
+    }
+    case CREATE_PROJECT: {
+      const data = action.payload
+
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [data.id]: data
+        },
+        ids: state.ids.concat([data.id])
+      }
+    }
+    case UPDATE_PROJECT: {
+      const data = action.payload
+
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [data.id]: data
+        }
+      }
+    }
+    case DELETE_PROJECT: {
+      const data = action.payload
+
+      return {
+        byId: Object.values(state.byId).reduce((byId, p) => {
+          if (p.id !== data.id) byId[p.id] = p
+          return byId
+        }, {}),
+        ids: state.ids.filter(id => id !== data.id)
+      }
     }
     default: {
       return state;

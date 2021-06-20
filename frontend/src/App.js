@@ -1,17 +1,19 @@
 import React from "react";
 
 import styled from "styled-components";
-import { withTheme } from "@material-ui/core/styles";
+import { StylesProvider, withTheme } from "@material-ui/core/styles";
 
 import ProjectsList from "./app/features/ProjectsList";
 
 const App = (props) => {
   return (
-    <Wrapper>
-      <Content>
-        <ProjectsList />
-      </Content>
-    </Wrapper>
+    <StylesProvider injectFirst>
+      <Wrapper>
+        <Content>
+          <ProjectsList />
+        </Content>
+      </Wrapper>
+    </StylesProvider>
   );
 };
 

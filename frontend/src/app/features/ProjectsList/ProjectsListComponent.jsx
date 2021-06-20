@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
 import Typography from "@material-ui/core/Typography";
+import ProjectsListItemComponent from "./ProjectsListItemComponent";
+import ProjectsListItemCreatorComponent from "./ProjectsListItemCreatorComponent";
 
 const Component = ({ projects }) => {
   return (
@@ -11,9 +12,10 @@ const Component = ({ projects }) => {
       <Title variant="h4">Projects List</Title>
       <List>
         {projects.map((p) => (
-          <ListItem key={p.id}>{p.title}</ListItem>
+          <ProjectsListItemComponent key={p.id} project={p} />
         ))}
       </List>
+      <ProjectsListItemCreatorComponent />
     </>
   );
 };
