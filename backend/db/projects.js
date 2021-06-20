@@ -39,9 +39,6 @@ export default class {
 
   static create = (attrs = {}) => {
     const id = data[data.length - 1].id + 1;
-    console.log('gerei',id);
-    console.log('data.length - 1', data.length - 1)
-    console.log('data', data)
     const project = {id, ...attrs};
     data.push(project);
 
@@ -63,7 +60,6 @@ export default class {
         }, true)
     );
     data.splice(index, 1);
-    console.log(data)
 
     return project;
   }
