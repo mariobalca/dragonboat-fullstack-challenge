@@ -30,6 +30,7 @@ const reducer = (state = initialState, action) => {
     }
     case CREATE_PROJECT: {
       const data = action.payload
+      state.ids.unshift(data.id)
 
       return {
         ...state,
@@ -37,7 +38,7 @@ const reducer = (state = initialState, action) => {
           ...state.byId,
           [data.id]: data
         },
-        ids: state.ids.concat([data.id])
+        ids: state.ids
       }
     }
     case UPDATE_PROJECT: {

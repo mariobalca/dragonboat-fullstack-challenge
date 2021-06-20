@@ -10,12 +10,12 @@ const Component = ({ projects }) => {
   return (
     <>
       <Title variant="h4">Projects List</Title>
+      <ProjectsListItemCreatorComponent />
       <List>
         {projects.map((p) => (
           <ProjectsListItemComponent key={p.id} project={p} />
         ))}
       </List>
-      <ProjectsListItemCreatorComponent />
     </>
   );
 };

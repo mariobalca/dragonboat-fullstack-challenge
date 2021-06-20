@@ -15,7 +15,7 @@ const Component = ({ project }) => {
 
   return (
     <Wrapper>
-      <InputLabel htmlFor="new-project-title">New project</InputLabel>
+      <InputLabel htmlFor="new-project-title">Quick new project</InputLabel>
       <Flex>
         <FullInput id="new-project-title" value={title} onChange={(e) => setTitle(e.target.value) } />
         <SubmitButton variant="outlined" color="primary" onClick={handleCreateClick}>Create project</SubmitButton>
@@ -26,8 +26,6 @@ const Component = ({ project }) => {
 
 const Wrapper = styled.div`
   margin: 40px 20px 20px 20px;
-  padding-top: 40px;
-  border-top: 1px solid #dedede; 
 `;
 
 

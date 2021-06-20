@@ -1,24 +1,40 @@
+import moment from 'moment'
 // This model mocks a real database model for the sake com simplicity
 const data = [
   {
     id: 1,
     title: "Project 1",
+    author: "James Doe",
+    start_date: moment(),
+    end_date: moment().add(4, 'days')
   },
   {
     id: 2,
     title: "Project 2",
+    author: "John Doe",
+    start_date: moment(),
+    end_date: moment().add(5, 'days')
   },
   {
     id: 3,
     title: "Project 3",
+    author: "Jason Doe",
+    start_date: moment(),
+    end_date: moment().add(6, 'days')
   },
   {
     id: 4,
     title: "Project 4",
+    author: "Javier Doe",
+    start_date: moment(),
+    end_date: moment().add(7, 'days')
   },
   {
     id: 5,
     title: "Project 5",
+    author: "Julian Doe",
+    start_date: moment(),
+    end_date: moment().add(8, 'days')
   },
 ];
 export default class {
@@ -31,7 +47,7 @@ export default class {
           return obj[key] === condition;
         }, true)
       )
-      .sort((a, b) => (a.id > b.id ? 1 : -1));
+      .sort((a, b) => (a.id < b.id ? 1 : -1));
   };
 
   // receives conditions like { title: 'Project 5' } and returns the first match
